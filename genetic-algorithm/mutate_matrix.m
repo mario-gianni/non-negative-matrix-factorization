@@ -28,12 +28,15 @@ j = min([i1 i2 t]);
 lambda1 = 0.3;
 lambda2 = 0.3;
 lambda3 = 0.3;
-
+%fprintf('Number of parents for mutation: %d\n', length(parents));
 mutationChildren = zeros(length(parents),NVARS);% Normally zeros(length(parents),NVARS);
 
 for i=1:length(parents)
     
     parent = thisPopulation(parents(i),:);
+    if(i==1)
+        %fprintf('Length of the parent individual for mutation: %d\n', length(parent));
+    end
     
     A1 = reshape(parent(1:i1*j),i1,j);
     A2 = reshape(parent((i1*j+1):(i1*j+i2*j)),i2,j);
@@ -56,4 +59,7 @@ for i=1:length(parents)
     
 %    mutationChildren{i} = [childA1(:); childA2(:);childX(:);Y1(:);Y2(:)];
     mutationChildren(i,:) = [A1(:); A2(:);X(:);Y1(:);Y2(:)]';
+    if(i==1)
+        %fprintf('Length of the mutatued child: %d\n', length(mutationChildren(i,:)));
+    end
 end

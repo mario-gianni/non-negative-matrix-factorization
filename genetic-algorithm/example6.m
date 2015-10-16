@@ -15,7 +15,7 @@ lambda2 = 0.3;
 lambda3 = 0.3;
 
 options = gaoptimset('PopulationType', 'doubleVector');
-
+ConstraintFunction = @simple_constraint;
 options = gaoptimset(options,'CreationFcn',@create_permutations, ...
     'CrossoverFcn',@crossover_matrix, ...
     'MutationFcn',@mutate_matrix, ...
@@ -25,10 +25,12 @@ options = gaoptimset(options,'CreationFcn',@create_permutations, ...
 
 
 FitnessFcn = @(x) objective_function(x,lambda1,lambda2,lambda3);
+
 % ConstraintFunction = @(x) simple_constraint(x);
 numberOfVariables = i1*j + i2*j + j*t + i1*t + i2*t; 
+fprintf('Number of variables: %d\n', numberOfVariables);
 LB = zeros(1,numberOfVariables);
-[x,fval,reason,output] = ga(FitnessFcn,numberOfVariables,[],[],[],[],LB,[],[],options);
+[x,fval,reason,output] = ga(FitnessFcn,numberOfVariables,[],[],[],[],LB,[],ConstraintFunction,options);
 
  A1 = reshape(x(1:i1*j),i1,j);
  A2 = reshape(x((i1*j+1):(i1*j+i2*j)),i2,j);

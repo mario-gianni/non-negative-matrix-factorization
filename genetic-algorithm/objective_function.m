@@ -1,5 +1,7 @@
 function scores = objective_function(x,lambda1,lambda2,lambda3)
 %   Copyright 2004-2007 The MathWorks, Inc.
+%fprintf('Num of individuals to be evaluated: %d\n', size(x,1));
+%fprintf('Length of the individual to be evaluated: %d\n', size(x,2));
 i1 = 5;
 i2 = 7;
 t = 4;

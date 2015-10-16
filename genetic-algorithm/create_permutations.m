@@ -15,6 +15,7 @@ function pop = create_permutations(NVARS,FitnessFcn,options)
 %   Copyright 2015 Mario Gianni - Alcor.
 
 totalPopulationSize = sum(options.PopulationSize);
+%fprintf('Population size : %d\n', totalPopulationSize);
 i1 = 5;
 i2 = 7;
 t = 4;
@@ -32,4 +33,7 @@ for i = 1:totalPopulationSize
     A2 = rand(i2,j); % A2 = rand(i2,j);
     X = rand(j,t); %X = rand(j,t);
     pop(i,:) = [A1(:);A2(:);X(:);Y1(:);Y2(:)]';
+    if i == 1
+       % fprintf('Length of an individual: %d\n', length(pop(i,:)));
+    end
 end

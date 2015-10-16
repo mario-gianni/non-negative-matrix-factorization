@@ -20,7 +20,9 @@ function xoverKids  = crossover_matrix(parents,options,NVARS,FitnessFcn,thisScor
 %   Copyright 2015 Mario Gianni - Alcor.
 % parents
 % size(parents)
+%fprintf('Number of parents for crossover: %d\n', length(parents));
 nKids = length(parents)/2;
+%fprintf('Number of kids : %d\n', nKids);
 xoverKids = zeros(nKids,NVARS); % Normally zeros(nKids,NVARS);
 index = 1;
 % i1 = NVARS(1);
@@ -38,7 +40,10 @@ for i=1:nKids
     % array is used. Normally, this would be thisPopulation(parents(index),:);
     parent1 = thisPopulation(parents(index),:);
     parent2 = thisPopulation(parents(index+1),:);
-    
+    if i == 1
+        %fprintf('Length of the parent individual 1 for crossover: %d\n', length(parent1));
+        %fprintf('Length of the parent individual 2 for crossover: %d\n', length(parent2));
+    end
     parentA11 = reshape(parent1(1:i1*j),i1,j);
     
     parentA12 = reshape(parent2(1:i1*j),i1,j);
@@ -69,6 +74,9 @@ for i=1:nKids
     [childA1,childA2,childX] = getChild(Y1,Y2,parentA11,parentA12,parentA21,parentA22,parentX1,parentX2);
         
     xoverKids(i,:) = [childA1(:);childA2(:);childX(:);Y1(:);Y2(:)]';
+    if(i == 1)
+        %fprintf('Length of a kid individual: %d\n', length(xoverKids(i,:)));
+    end
     
     index = index + 2;
 

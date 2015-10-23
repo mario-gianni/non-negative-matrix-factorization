@@ -8,9 +8,9 @@ max_int = 5;
 [Y1,Y2] = create_matrices(i1,i2,t,max_int);
 [A1,A2,X] = initialization(i1,i2,t);
 
-lambda1 = 0.3;
-lambda2 = 0.3;
-lambda3 = 0.3;
+lambda1 = 0.003;
+lambda2 = 0.003;
+lambda3 = 0.003;
 
 max_it = 1000;
 [A1,A2,X,error] = mult_up_rules_optimization(Y1,Y2,A1,A2,X,lambda1,lambda2,lambda3,max_it);

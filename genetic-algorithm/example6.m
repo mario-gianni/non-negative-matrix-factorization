@@ -10,9 +10,9 @@ j = min([i1 i2 t]);
 % max_int = 5;
 % Y1 = randi(max_int+1,i1,t) - 1;
 % Y2 = randi(max_int+1,i2,t) - 1;
-lambda1 = 0.3;
-lambda2 = 0.3;
-lambda3 = 0.3;
+lambda1 = 0.003;
+lambda2 = 0.003;
+lambda3 = 0.003;
 
 options = gaoptimset('PopulationType', 'doubleVector');
 ConstraintFunction = @simple_constraint;

@@ -44,20 +44,21 @@ for i=1:length(parents)
     Y1 = reshape(parent((i1*j+i2*j+j*t+1):(i1*j+i2*j+j*t+i1*t)),i1,t);
     Y2 = reshape(parent((i1*j+i2*j+j*t+i1*t+1):(i1*j+i2*j+j*t+i1*t+i2*t)),i2,t);
     
-%     childA1 = flipud(A1);
-%     childA1 = fliplr(childA1);
+     childA1 = flipud(A1);
+     childA1 = fliplr(childA1);
 %     
-%     childA2 = flipud(A2);
-%     childA2 = fliplr(childA2);
+     childA2 = flipud(A2);
+     childA2 = fliplr(childA2);
 %     
-%     childX = flipud(X);
-%     childX = fliplr(childX);
+     childX = flipud(X);
+     childX = fliplr(childX);
 
     A1 = A1.*((Y1*X')./(lambda1*A1 + A1*(X*X')));
     A2 = A2.*((Y2*X')./(lambda2*A2 + A2*(X*X')));
     X = X.*((A1'*Y1 + A2'*Y2)./(lambda3*X + A1'*A1*X + A2'*A2*X));
+%    X = X*pinv(X'*X)*X';
     
-%    mutationChildren{i} = [childA1(:); childA2(:);childX(:);Y1(:);Y2(:)];
+%    mutationChildren(i,:) = [childA1(:); childA2(:);childX(:);Y1(:);Y2(:)]';
     mutationChildren(i,:) = [A1(:); A2(:);X(:);Y1(:);Y2(:)]';
     if(i==1)
         %fprintf('Length of the mutatued child: %d\n', length(mutationChildren(i,:)));

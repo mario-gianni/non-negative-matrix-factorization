@@ -16,7 +16,7 @@ max_it = 2000;
 [A1,A2,X,error] = mult_up_rules_optimization_stiefel(Y1,Y2,A1,A2,X,lambda1,lambda2,lambda3,max_it);
 
 it = 1:(max_it+1);
-plot(it,error,'-r','linewidth',3);
+plot(it,error,'.r','linewidth',3);
 
 grid on
 xlabel('Number of iterations');

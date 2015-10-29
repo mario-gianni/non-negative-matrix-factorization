@@ -10,9 +10,9 @@ j = min([i1 i2 t]);
 % max_int = 5;
 % Y1 = randi(max_int+1,i1,t) - 1;
 % Y2 = randi(max_int+1,i2,t) - 1;
-lambda1 = 0.003;
-lambda2 = 0.003;
-lambda3 = 0.003;
+lambda1 = 0.001;
+lambda2 = 0.001;
+lambda3 = 0.001;
 
 options = gaoptimset('PopulationType', 'doubleVector');
 ConstraintFunction = @simple_constraint;
@@ -20,7 +20,7 @@ options = gaoptimset(options,'CreationFcn',@create_permutations, ...
     'CrossoverFcn',@crossover_matrix, ...
     'MutationFcn',@mutate_matrix, ...
     'PlotFcns',{@gaplotbestf,@gaplotstopping},...
-    'Generations',500,'PopulationSize',200, ...
+    'Generations',1000,'PopulationSize',500, ...
     'StallGenLimit',200,'Vectorized','on','TolFun', 1.0000e-10);
 
 

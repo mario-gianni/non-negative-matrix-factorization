@@ -67,9 +67,9 @@ for i=1:nKids
     
 %    save('matrices.mat','Y1','Y2','parentA11','parentA21','parentA12','parentA22','parentX1','parentX2','-append');
     
-%      childA1 = [parentA11(:,1:ceil(j/2)) parentA12(:,(ceil(j/2)+1):end)];
-%      childA2 = [parentA21(:,1:ceil(j/2)) parentA22(:,(ceil(j/2)+1):end)];
-%      childX = [parentX1(:,1:ceil(t/2)) parentX2(:,(ceil(t/2)+1):end)];
+%       childA1 = [parentA11(:,1:ceil(j/2)) parentA12(:,(ceil(j/2)+1):end)] + 0.1*rand(i1,j);
+%       childA2 = [parentA21(:,1:ceil(j/2)) parentA22(:,(ceil(j/2)+1):end)] + 0.1*rand(i2,j);
+%       childX = [parentX1(:,1:ceil(t/2)) parentX2(:,(ceil(t/2)+1):end)] + 0.1*rand(j,t);
 
     [childA1,childA2,childX] = getChild(Y1,Y2,parentA11,parentA12,parentA21,parentA22,parentX1,parentX2);
         
